@@ -7,5 +7,33 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "/tsp": {
+      "post": {
+        "summary": "Upserts a new Tsp",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "TSP Object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Tsp"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
 }
