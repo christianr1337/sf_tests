@@ -1,0 +1,403 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Definition of the active integration between salesforce and heycar - this covers the data that will be sent by salesforce to heycar",
+    "version": "1.0.0",
+    "title": "hey, salesforce",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "staging.hey.car",
+  "basePath": "/salesfoce/v1",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/tsp": {
+      "post": {
+        "summary": "Upserts a new Tsp",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "TSP Object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Tsp"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/network": {
+      "post": {
+        "summary": "Upserts a new Network",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Network Object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Network"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/dealer": {
+      "post": {
+        "summary": "Upserts a new Dealer",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Dealer Object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Dealer"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/salesBrand": {
+      "post": {
+        "summary": "Upserts a new SalesBrand",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Sales Brand Object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SalesBrand"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Tsp": {
+      "title": "Tsp",
+      "type": "object",
+      "required": [
+        "salesforceId",
+        "name"
+      ],
+      "properties": {
+        "salesforceId": {
+          "description": "Id used on salesforce",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "reportingEnabled": {
+          "type": "boolean"
+        },
+        "contactEmail": {
+          "type": "string"
+        },
+        "contactName": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "hidden": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Network": {
+      "title": "Network",
+      "type": "object",
+      "required": [
+        "salesforceId",
+        "guaranteeType",
+        "active",
+        "name"
+      ],
+      "properties": {
+        "salesforceId": {
+          "description": "Id used on salesforce",
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "responsiblePersonFirstName": {
+          "type": "string"
+        },
+        "responsiblePersonLastName": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "guaranteeType": {
+          "type": "string",
+          "enum": [
+            "ALL",
+            "INDIVIDUAL"
+          ]
+        },
+        "street": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        }
+      }
+    },
+    "Dealer": {
+      "title": "Dealer",
+      "type": "object",
+      "required": [
+        "salesForceId",
+        "salesforceNetworkId",
+        "salesforceTspId",
+        "leadFormat",
+        "openingTimes",
+        "salesBrands"
+      ],
+      "properties": {
+        "salesforceId": {
+          "description": "Id used on salesforce",
+          "type": "string"
+        },
+        "salesforceNetworkId": {
+          "description": "Id used on salesforce to reference the Network",
+          "type": "string"
+        },
+        "salesforceTspId": {
+          "description": "Id used on salesforce to reference the Tsp",
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "lat": {
+          "type": "number",
+          "format": "double"
+        },
+        "lon": {
+          "type": "number",
+          "format": "double"
+        },
+        "agentImage": {
+          "type": "string"
+        },
+        "agentImageUrl": {
+          "type": "string"
+        },
+        "bannerImage": {
+          "type": "string"
+        },
+        "bannerImageUrl": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "agentName": {
+          "type": "string"
+        },
+        "agentTitle": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "fdlConditions": {
+          "type": "string",
+          "enum": [
+            "aeb",
+            "oem",
+            "independent",
+            "vwfs",
+            "mbb",
+            "none",
+            "pfs"
+          ]
+        },
+        "imprint": {
+          "type": "string"
+        },
+        "leadEmail": {
+          "type": "string"
+        },
+        "leadFormat": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "ADF",
+            "AUER",
+            "AUTOCRM",
+            "AUTODO",
+            "AUTOHAUSEN",
+            "CARGATE",
+            "CARLOCRM",
+            "CLEVERLEAD",
+            "CUSTOMERONE",
+            "DEALERDESK",
+            "EAUTOSELLER",
+            "MOTIONDE",
+            "NETCON24",
+            "PIXELCONCEPT",
+            "SALT24",
+            "TWOS",
+            "WEBMOBIL24",
+            "OTHER"
+          ]
+        },
+        "leadFormatOther": {
+          "type": "string"
+        },
+        "mobileId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "enum": [
+            "bank_transfer",
+            "sepa_direct_debit"
+          ]
+        },
+        "phone": {
+          "type": "string"
+        },
+        "salesLabel": {
+          "type": "string"
+        },
+        "showOnFacebookMarketplace": {
+          "type": "boolean"
+        },
+        "testDealer": {
+          "type": "boolean"
+        },
+        "tspOther": {
+          "type": "string"
+        },
+        "vwDealerNumber": {
+          "type": "number"
+        },
+        "website": {
+          "type": "string"
+        }
+      }
+    },
+    "SalesBrand": {
+      "title": "SalesBrand",
+      "type": "object",
+      "required": [
+        "salesforceId",
+        "salesforceDealerId",
+        "brandName",
+        "brandId"
+      ],
+      "properties": {
+        "salesforceId": {
+          "description": "Id used on salesforce",
+          "type": "string"
+        },
+        "salesforceDealerId": {
+          "description": "Id used on salesforce to reference the Dealer",
+          "type": "string"
+        },
+        "brandName": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "VOLKSWAGEN",
+            "AUDI",
+            "VOLKSWAGEN_UTILITY_VEHICLES",
+            "MERCEDES",
+            "SEAT",
+            "PORSCHE",
+            "SKODA"
+          ]
+        },
+        "brandId": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
