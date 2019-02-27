@@ -1,14 +1,5 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "hello"
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
-  "/tsp": {
+  "tsp": {
       "post": {
         "summary": "Upserts a new Tsp",
         "description": "",
@@ -35,5 +26,14 @@
           }
         }
       }
+    },
+  "posts": [
+    {
+      "id": 1,
+      "title": "hello"
     }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }
